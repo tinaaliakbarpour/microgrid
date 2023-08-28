@@ -1,0 +1,7 @@
+syntax = "proto3";
+package microgrid.iot;
+
+option go_package = "github.com/tinaaliakbarpour/microgrid/x/iot/types";
+
+// Msg defines the Msg service.
+service Msg {}
