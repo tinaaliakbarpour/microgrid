@@ -43,17 +43,18 @@ func (k Keeper) Device(goCtx context.Context, req *types.QueryGetDeviceRequest) 
 	if req == nil {
 		return nil, status.Error(codes.InvalidArgument, "invalid request")
 	}
-	// ctx := sdk.UnwrapSDKContext(goCtx)
+	ctx := sdk.UnwrapSDKContext(goCtx)
 
-	// val, found := k.GetDevice(
-	// 	ctx,
-	// 	req.GridId,
-	// )
-	// if !found {
-	// 	return nil, status.Error(codes.NotFound, "not found")
-	// }
+	val, found := k.GetDevice(
+		ctx,
+		req.GridId,
+		req.Address,
+	)
+	if !found {
+		return nil, status.Error(codes.NotFound, "not found")
+	}
 
-	return &types.QueryGetDeviceResponse{}, nil
+	return &types.QueryGetDeviceResponse{Device: val}, nil
 }
 
 //todo:: ???

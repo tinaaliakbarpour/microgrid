@@ -43,6 +43,10 @@ const (
 	// TODO: Determine the simulation weight value
 	defaultWeightMsgUpdateDeviceStatus int = 100
 
+	opWeightMsgDeleteDevice = "op_weight_msg_delete_device"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgDeleteDevice int = 100
+
 	// this line is used by starport scaffolding # simapp/module/const
 )
 
@@ -126,6 +130,17 @@ func (am AppModule) WeightedOperations(simState module.SimulationState) []simtyp
 		iotsimulation.SimulateMsgUpdateDeviceStatus(am.accountKeeper, am.bankKeeper, am.keeper),
 	))
 
+	var weightMsgDeleteDevice int
+	simState.AppParams.GetOrGenerate(simState.Cdc, opWeightMsgDeleteDevice, &weightMsgDeleteDevice, nil,
+		func(_ *rand.Rand) {
+			weightMsgDeleteDevice = defaultWeightMsgDeleteDevice
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgDeleteDevice,
+		iotsimulation.SimulateMsgDeleteDevice(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
 	// this line is used by starport scaffolding # simapp/module/operation
 
 	return operations
@@ -171,6 +186,14 @@ func (am AppModule) ProposalMsgs(simState module.SimulationState) []simtypes.Wei
 			defaultWeightMsgUpdateDeviceStatus,
 			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
 				iotsimulation.SimulateMsgUpdateDeviceStatus(am.accountKeeper, am.bankKeeper, am.keeper)
+				return nil
+			},
+		),
+		simulation.NewWeightedProposalMsg(
+			opWeightMsgDeleteDevice,
+			defaultWeightMsgDeleteDevice,
+			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
+				iotsimulation.SimulateMsgDeleteDevice(am.accountKeeper, am.bankKeeper, am.keeper)
 				return nil
 			},
 		),

@@ -13,6 +13,7 @@ service Msg {
   rpc DeleteGrid         (MsgDeleteGrid        ) returns (MsgDeleteGridResponse        );
   rpc CreateDevice       (MsgCreateDevice      ) returns (MsgCreateDeviceResponse      );
   rpc UpdateDeviceStatus (MsgUpdateDeviceStatus) returns (MsgUpdateDeviceStatusResponse);
+  rpc DeleteDevice       (MsgDeleteDevice      ) returns (MsgDeleteDeviceResponse      );
 }
 message MsgCreateGrid {
   string creator   = 1;
@@ -65,4 +66,12 @@ message MsgUpdateDeviceStatus {
 }
 
 message MsgUpdateDeviceStatusResponse {}
+
+message MsgDeleteDevice {
+  string creator = 1;
+  uint64 gridId  = 2;
+  string address = 3;
+}
+
+message MsgDeleteDeviceResponse {}
 

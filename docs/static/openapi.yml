@@ -75653,6 +75653,8 @@ definitions:
       id:
         type: string
         format: uint64
+  microgrid.iot.MsgDeleteDeviceResponse:
+    type: object
   microgrid.iot.MsgDeleteGridResponse:
     type: object
   microgrid.iot.MsgRegisterAdminResponse:

@@ -88,4 +88,7 @@ ignite scaffold message create-device grid-id:uint lat:int lon:int voltage:uint 
 
 ignite scaffold message update-device-status voltage:uint power:uint others:string addres:string grid-id:uint  --module iot
 
+ignite scaffold message delete-device grid-id:uint address:string --module iot
+
+
 ```

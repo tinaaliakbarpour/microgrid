@@ -2,8 +2,10 @@ package keeper
 
 import (
 	"context"
+	"fmt"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
+	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	"github.com/tinaaliakbarpour/microgrid/x/iot/types"
 )
 
@@ -12,7 +14,7 @@ func (k msgServer) UpdateDeviceStatus(goCtx context.Context, msg *types.MsgUpdat
 
 	device, found := k.GetDevice(ctx, msg.GridId, msg.Addres)
 	if !found {
-
+		return nil, sdkerrors.Wrap(sdkerrors.ErrKeyNotFound, fmt.Sprintf("key %d-%d doesn't exist", msg.GridId, msg.Addres))
 	}
 
 	device.Voltage = msg.Voltage
@@ -21,3 +23,5 @@ func (k msgServer) UpdateDeviceStatus(goCtx context.Context, msg *types.MsgUpdat
 
 	return &types.MsgUpdateDeviceStatusResponse{}, nil
 }
+
+//also there sould some authentication for msg creator
