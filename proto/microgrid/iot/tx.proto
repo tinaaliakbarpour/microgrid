@@ -1,7 +1,22 @@
 syntax = "proto3";
+
 package microgrid.iot;
 
 option go_package = "github.com/tinaaliakbarpour/microgrid/x/iot/types";
 
 // Msg defines the Msg service.
-service Msg {}
+service Msg {
+  rpc CreateGrid (MsgCreateGrid) returns (MsgCreateGridResponse);
+}
+message MsgCreateGrid {
+  string creator   = 1;
+  string name      = 2;
+  int32  centerLat = 3;
+  int32  centerLon = 4;
+  uint64 side      = 5;
+}
+
+message MsgCreateGridResponse {
+  uint64 id = 1;
+}
+
