@@ -1,26 +1,58 @@
 syntax = "proto3";
+
 package microgrid.iot;
 
 import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "microgrid/iot/params.proto";
+import "microgrid/iot/grid.proto";
 
 option go_package = "github.com/tinaaliakbarpour/microgrid/x/iot/types";
 
 // Query defines the gRPC querier service.
 service Query {
+  
   // Parameters queries the parameters of the module.
-  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+  rpc Params (QueryParamsRequest) returns (QueryParamsResponse) {
     option (google.api.http).get = "/tinaaliakbarpour/microgrid/iot/params";
+  
+  }
+  
+  // Queries a list of Grid items.
+  rpc Grid    (QueryGetGridRequest) returns (QueryGetGridResponse) {
+    option (google.api.http).get = "/tinaaliakbarpour/microgrid/iot/grid/{id}";
+  
+  }
+  rpc GridAll (QueryAllGridRequest) returns (QueryAllGridResponse) {
+    option (google.api.http).get = "/tinaaliakbarpour/microgrid/iot/grid";
+  
   }
 }
-
 // QueryParamsRequest is request type for the Query/Params RPC method.
 message QueryParamsRequest {}
 
 // QueryParamsResponse is response type for the Query/Params RPC method.
 message QueryParamsResponse {
+  
   // params holds all the parameters of this module.
   Params params = 1 [(gogoproto.nullable) = false];
 }
+
+message QueryGetGridRequest {
+  uint64 id = 1;
+}
+
+message QueryGetGridResponse {
+  Grid Grid = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllGridRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllGridResponse {
+  repeated Grid                                   Grid       = 1 [(gogoproto.nullable) = false];
+           cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+

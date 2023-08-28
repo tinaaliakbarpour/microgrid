@@ -19,12 +19,47 @@ func TestGenesisState_Validate(t *testing.T) {
 			valid:    true,
 		},
 		{
-			desc:     "valid genesis state",
+			desc: "valid genesis state",
 			genState: &types.GenesisState{
 
+				GridList: []types.Grid{
+					{
+						Id: 0,
+					},
+					{
+						Id: 1,
+					},
+				},
+				GridCount: 2,
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,
+		},
+		{
+			desc: "duplicated grid",
+			genState: &types.GenesisState{
+				GridList: []types.Grid{
+					{
+						Id: 0,
+					},
+					{
+						Id: 0,
+					},
+				},
+			},
+			valid: false,
+		},
+		{
+			desc: "invalid grid count",
+			genState: &types.GenesisState{
+				GridList: []types.Grid{
+					{
+						Id: 1,
+					},
+				},
+				GridCount: 0,
+			},
+			valid: false,
 		},
 		// this line is used by starport scaffolding # types/genesis/testcase
 	}
