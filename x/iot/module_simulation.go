@@ -39,6 +39,10 @@ const (
 	// TODO: Determine the simulation weight value
 	defaultWeightMsgCreateDevice int = 100
 
+	opWeightMsgUpdateDeviceStatus = "op_weight_msg_update_device_status"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgUpdateDeviceStatus int = 100
+
 	// this line is used by starport scaffolding # simapp/module/const
 )
 
@@ -111,6 +115,17 @@ func (am AppModule) WeightedOperations(simState module.SimulationState) []simtyp
 		iotsimulation.SimulateMsgCreateDevice(am.accountKeeper, am.bankKeeper, am.keeper),
 	))
 
+	var weightMsgUpdateDeviceStatus int
+	simState.AppParams.GetOrGenerate(simState.Cdc, opWeightMsgUpdateDeviceStatus, &weightMsgUpdateDeviceStatus, nil,
+		func(_ *rand.Rand) {
+			weightMsgUpdateDeviceStatus = defaultWeightMsgUpdateDeviceStatus
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgUpdateDeviceStatus,
+		iotsimulation.SimulateMsgUpdateDeviceStatus(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
 	// this line is used by starport scaffolding # simapp/module/operation
 
 	return operations
@@ -148,6 +163,14 @@ func (am AppModule) ProposalMsgs(simState module.SimulationState) []simtypes.Wei
 			defaultWeightMsgCreateDevice,
 			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
 				iotsimulation.SimulateMsgCreateDevice(am.accountKeeper, am.bankKeeper, am.keeper)
+				return nil
+			},
+		),
+		simulation.NewWeightedProposalMsg(
+			opWeightMsgUpdateDeviceStatus,
+			defaultWeightMsgUpdateDeviceStatus,
+			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
+				iotsimulation.SimulateMsgUpdateDeviceStatus(am.accountKeeper, am.bankKeeper, am.keeper)
 				return nil
 			},
 		),

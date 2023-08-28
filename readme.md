@@ -86,4 +86,6 @@ now we go through device messages:
 
 ignite scaffold message create-device grid-id:uint lat:int lon:int voltage:uint power:uint others:string  --module iot
 
+ignite scaffold message update-device-status voltage:uint power:uint others:string addres:string grid-id:uint  --module iot
+
 ```

@@ -467,6 +467,126 @@ func (m *MsgCreateDeviceResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MsgCreateDeviceResponse proto.InternalMessageInfo
 
+type MsgUpdateDeviceStatus struct {
+	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Voltage uint64 `protobuf:"varint,2,opt,name=voltage,proto3" json:"voltage,omitempty"`
+	Power   uint64 `protobuf:"varint,3,opt,name=power,proto3" json:"power,omitempty"`
+	Others  string `protobuf:"bytes,4,opt,name=others,proto3" json:"others,omitempty"`
+	Addres  string `protobuf:"bytes,5,opt,name=addres,proto3" json:"addres,omitempty"`
+	GridId  uint64 `protobuf:"varint,6,opt,name=gridId,proto3" json:"gridId,omitempty"`
+}
+
+func (m *MsgUpdateDeviceStatus) Reset()         { *m = MsgUpdateDeviceStatus{} }
+func (m *MsgUpdateDeviceStatus) String() string { return proto.CompactTextString(m) }
+func (*MsgUpdateDeviceStatus) ProtoMessage()    {}
+func (*MsgUpdateDeviceStatus) Descriptor() ([]byte, []int) {
+	return fileDescriptor_9a5300a5bade0bae, []int{8}
+}
+func (m *MsgUpdateDeviceStatus) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgUpdateDeviceStatus) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgUpdateDeviceStatus.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgUpdateDeviceStatus) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgUpdateDeviceStatus.Merge(m, src)
+}
+func (m *MsgUpdateDeviceStatus) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgUpdateDeviceStatus) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgUpdateDeviceStatus.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgUpdateDeviceStatus proto.InternalMessageInfo
+
+func (m *MsgUpdateDeviceStatus) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgUpdateDeviceStatus) GetVoltage() uint64 {
+	if m != nil {
+		return m.Voltage
+	}
+	return 0
+}
+
+func (m *MsgUpdateDeviceStatus) GetPower() uint64 {
+	if m != nil {
+		return m.Power
+	}
+	return 0
+}
+
+func (m *MsgUpdateDeviceStatus) GetOthers() string {
+	if m != nil {
+		return m.Others
+	}
+	return ""
+}
+
+func (m *MsgUpdateDeviceStatus) GetAddres() string {
+	if m != nil {
+		return m.Addres
+	}
+	return ""
+}
+
+func (m *MsgUpdateDeviceStatus) GetGridId() uint64 {
+	if m != nil {
+		return m.GridId
+	}
+	return 0
+}
+
+type MsgUpdateDeviceStatusResponse struct {
+}
+
+func (m *MsgUpdateDeviceStatusResponse) Reset()         { *m = MsgUpdateDeviceStatusResponse{} }
+func (m *MsgUpdateDeviceStatusResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgUpdateDeviceStatusResponse) ProtoMessage()    {}
+func (*MsgUpdateDeviceStatusResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_9a5300a5bade0bae, []int{9}
+}
+func (m *MsgUpdateDeviceStatusResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgUpdateDeviceStatusResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgUpdateDeviceStatusResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgUpdateDeviceStatusResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgUpdateDeviceStatusResponse.Merge(m, src)
+}
+func (m *MsgUpdateDeviceStatusResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgUpdateDeviceStatusResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgUpdateDeviceStatusResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgUpdateDeviceStatusResponse proto.InternalMessageInfo
+
 func init() {
 	proto.RegisterType((*MsgCreateGrid)(nil), "microgrid.iot.MsgCreateGrid")
 	proto.RegisterType((*MsgCreateGridResponse)(nil), "microgrid.iot.MsgCreateGridResponse")
@@ -476,43 +596,50 @@ func init() {
 	proto.RegisterType((*MsgDeleteGridResponse)(nil), "microgrid.iot.MsgDeleteGridResponse")
 	proto.RegisterType((*MsgCreateDevice)(nil), "microgrid.iot.MsgCreateDevice")
 	proto.RegisterType((*MsgCreateDeviceResponse)(nil), "microgrid.iot.MsgCreateDeviceResponse")
+	proto.RegisterType((*MsgUpdateDeviceStatus)(nil), "microgrid.iot.MsgUpdateDeviceStatus")
+	proto.RegisterType((*MsgUpdateDeviceStatusResponse)(nil), "microgrid.iot.MsgUpdateDeviceStatusResponse")
 }
 
 func init() { proto.RegisterFile("microgrid/iot/tx.proto", fileDescriptor_9a5300a5bade0bae) }
 
 var fileDescriptor_9a5300a5bade0bae = []byte{
-	// 493 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x54, 0xcf, 0x6e, 0xd3, 0x30,
-	0x1c, 0x6e, 0xd2, 0xb4, 0x53, 0x7f, 0x50, 0x98, 0x0c, 0x6c, 0xa6, 0x9a, 0x42, 0x15, 0x21, 0xda,
-	0x53, 0x2a, 0xc6, 0x89, 0x23, 0x6c, 0x12, 0x42, 0x50, 0x69, 0xca, 0x61, 0x12, 0xdc, 0xdc, 0xe4,
-	0xa7, 0xcc, 0xa2, 0x8d, 0x23, 0xdb, 0x1b, 0xe3, 0x21, 0x90, 0x78, 0x13, 0x5e, 0x83, 0xe3, 0x8e,
-	0x1c, 0x38, 0xa0, 0xf6, 0x45, 0x90, 0xdd, 0x39, 0x6d, 0xba, 0xd1, 0xdd, 0x7e, 0x7f, 0x3f, 0x7f,
-	0xfe, 0x3e, 0xcb, 0xb0, 0x37, 0xe3, 0xa9, 0x14, 0xb9, 0xe4, 0xd9, 0x88, 0x0b, 0x3d, 0xd2, 0x97,
-	0x71, 0x29, 0x85, 0x16, 0xa4, 0x5b, 0xd5, 0x63, 0x2e, 0x74, 0x8f, 0xd6, 0xc7, 0x6c, 0xdd, 0x0e,
-	0x46, 0xdf, 0x3d, 0xe8, 0x8e, 0x55, 0x7e, 0x24, 0x91, 0x69, 0x7c, 0x27, 0x79, 0x46, 0x28, 0xec,
-	0xa4, 0x26, 0x13, 0x92, 0x7a, 0x7d, 0x6f, 0xd8, 0x49, 0x5c, 0x4a, 0x08, 0x04, 0x05, 0x9b, 0x21,
-	0xf5, 0x6d, 0xd9, 0xc6, 0xe4, 0x00, 0x3a, 0x29, 0x16, 0x1a, 0xe5, 0x47, 0xa6, 0x69, 0xb3, 0xef,
-	0x0d, 0x5b, 0xc9, 0xaa, 0xb0, 0xd6, 0x15, 0x05, 0x0d, 0x6a, 0x5d, 0x51, 0x18, 0x3c, 0xc5, 0x33,
-	0xa4, 0xad, 0xbe, 0x37, 0x0c, 0x12, 0x1b, 0x47, 0x03, 0x78, 0x52, 0xa3, 0x93, 0xa0, 0x2a, 0x45,
-	0xa1, 0x90, 0x3c, 0x00, 0x9f, 0x67, 0x96, 0x51, 0x90, 0xf8, 0x3c, 0x8b, 0x4e, 0x61, 0x77, 0xac,
-	0xf2, 0x04, 0x73, 0xae, 0x34, 0xca, 0x37, 0xd9, 0x8c, 0x17, 0x5b, 0xa8, 0x2f, 0xb7, 0x7d, 0xb7,
-	0x6d, 0x26, 0x59, 0x96, 0x49, 0x54, 0xca, 0x92, 0xee, 0x24, 0x2e, 0x8d, 0x8e, 0x80, 0x6e, 0xe2,
-	0x56, 0x1c, 0x06, 0x10, 0x18, 0xe9, 0x2c, 0xf8, 0xbd, 0xc3, 0x47, 0x71, 0x4d, 0xe4, 0xd8, 0xd2,
-	0xb5, 0x03, 0xd1, 0x6b, 0x2b, 0xea, 0x31, 0x4e, 0xf1, 0x4e, 0x51, 0x37, 0x98, 0x45, 0xfb, 0x56,
-	0x80, 0xd5, 0xaa, 0x3b, 0x3c, 0xfa, 0xe9, 0xc1, 0xc3, 0x4a, 0x9a, 0x63, 0xbc, 0xe0, 0x29, 0x6e,
-	0x81, 0xdd, 0x83, 0xb6, 0x61, 0xf2, 0xde, 0x41, 0x5f, 0x67, 0x64, 0x17, 0x9a, 0xd3, 0xca, 0x29,
-	0x13, 0xda, 0x4a, 0xe5, 0x8e, 0x09, 0x0d, 0xea, 0x85, 0x98, 0x6a, 0x96, 0x3b, 0x6b, 0x5c, 0x4a,
-	0x1e, 0x43, 0xab, 0x14, 0x5f, 0x51, 0xd2, 0xb6, 0xad, 0x2f, 0x13, 0x73, 0x96, 0xd0, 0x67, 0x28,
-	0x15, 0xdd, 0xb1, 0x24, 0xae, 0xb3, 0xe8, 0x29, 0xec, 0x6f, 0x10, 0x76, 0x97, 0x39, 0xfc, 0xe3,
-	0x43, 0x73, 0xac, 0x72, 0x72, 0x02, 0xb0, 0xf6, 0xf4, 0x0e, 0x36, 0x14, 0xad, 0xbd, 0x84, 0xde,
-	0xf3, 0x6d, 0xdd, 0xca, 0xa3, 0x4f, 0xd0, 0xad, 0x3f, 0x8a, 0x67, 0x37, 0xd7, 0x6a, 0x03, 0xbd,
-	0xc1, 0x1d, 0x03, 0x15, 0xf4, 0x09, 0xc0, 0x9a, 0xa5, 0xb7, 0x90, 0x5d, 0x75, 0x6f, 0x23, 0x7b,
-	0xd3, 0x53, 0x72, 0x0a, 0xf7, 0x6b, 0x7e, 0x86, 0xff, 0xbb, 0xe2, 0xb2, 0xdf, 0x7b, 0xb1, 0xbd,
-	0xef, 0x70, 0xdf, 0x7e, 0xf8, 0x35, 0x0f, 0xbd, 0xab, 0x79, 0xe8, 0xfd, 0x9d, 0x87, 0xde, 0x8f,
-	0x45, 0xd8, 0xb8, 0x5a, 0x84, 0x8d, 0xdf, 0x8b, 0xb0, 0xf1, 0xf9, 0x65, 0xce, 0xf5, 0xd9, 0xf9,
-	0x24, 0x4e, 0xc5, 0x6c, 0xa4, 0x79, 0xc1, 0xd8, 0x94, 0xb3, 0x2f, 0x13, 0x26, 0x4b, 0x71, 0x2e,
-	0x47, 0xab, 0x5f, 0xe2, 0x72, 0xf9, 0x9d, 0x7c, 0x2b, 0x51, 0x4d, 0xda, 0xf6, 0xa7, 0x78, 0xf5,
-	0x2f, 0x00, 0x00, 0xff, 0xff, 0xe1, 0x57, 0x7e, 0x9f, 0x6c, 0x04, 0x00, 0x00,
+	// 563 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x94, 0xcf, 0x6f, 0xd3, 0x30,
+	0x14, 0xc7, 0x97, 0x36, 0xed, 0xd4, 0x07, 0x85, 0xc9, 0xc0, 0x66, 0xaa, 0x91, 0x55, 0x11, 0xa2,
+	0x3d, 0xa0, 0x56, 0x8c, 0x13, 0x47, 0xd8, 0x24, 0x84, 0xa0, 0xd2, 0x14, 0xc4, 0x24, 0xb8, 0xb9,
+	0x8d, 0x95, 0x5a, 0xb4, 0x71, 0x64, 0xbb, 0x63, 0xfc, 0x11, 0x48, 0xfc, 0x1b, 0x9c, 0xf8, 0x2f,
+	0x10, 0xc7, 0x1d, 0x39, 0xa2, 0xf6, 0x1f, 0x41, 0x76, 0x1b, 0x37, 0x69, 0xb3, 0x8c, 0x9b, 0xdf,
+	0x0f, 0xbf, 0x7c, 0xde, 0x7b, 0xdf, 0x18, 0xf6, 0xa7, 0x6c, 0x24, 0x78, 0x24, 0x58, 0xd8, 0x67,
+	0x5c, 0xf5, 0xd5, 0x65, 0x2f, 0x11, 0x5c, 0x71, 0xd4, 0xb4, 0xfe, 0x1e, 0xe3, 0xaa, 0x85, 0xf3,
+	0x69, 0xc6, 0x6f, 0x12, 0xfd, 0x6f, 0x0e, 0x34, 0x07, 0x32, 0x3a, 0x11, 0x94, 0x28, 0xfa, 0x5a,
+	0xb0, 0x10, 0x61, 0xd8, 0x1d, 0x69, 0x8b, 0x0b, 0xec, 0xb4, 0x9d, 0x6e, 0x23, 0x48, 0x4d, 0x84,
+	0xc0, 0x8d, 0xc9, 0x94, 0xe2, 0x8a, 0x71, 0x9b, 0x33, 0x3a, 0x84, 0xc6, 0x88, 0xc6, 0x8a, 0x8a,
+	0x77, 0x44, 0xe1, 0x6a, 0xdb, 0xe9, 0xd6, 0x82, 0xb5, 0x23, 0x13, 0xe5, 0x31, 0x76, 0x73, 0x51,
+	0x1e, 0xeb, 0x7a, 0x92, 0x85, 0x14, 0xd7, 0xda, 0x4e, 0xd7, 0x0d, 0xcc, 0xd9, 0xef, 0xc0, 0x83,
+	0x1c, 0x4e, 0x40, 0x65, 0xc2, 0x63, 0x49, 0xd1, 0x1d, 0xa8, 0xb0, 0xd0, 0x10, 0xb9, 0x41, 0x85,
+	0x85, 0xfe, 0x39, 0xec, 0x0d, 0x64, 0x14, 0xd0, 0x88, 0x49, 0x45, 0xc5, 0xcb, 0x70, 0xca, 0xe2,
+	0x12, 0xf4, 0xe5, 0xed, 0x4a, 0x7a, 0x5b, 0x67, 0x92, 0x30, 0x14, 0x54, 0x4a, 0x03, 0xdd, 0x08,
+	0x52, 0xd3, 0x3f, 0x01, 0xbc, 0x59, 0xd7, 0x32, 0x74, 0xc0, 0xd5, 0xa3, 0x33, 0xc5, 0x6f, 0x1d,
+	0xdf, 0xeb, 0xe5, 0x86, 0xdc, 0x33, 0xb8, 0x26, 0xc1, 0x7f, 0x61, 0x86, 0x7a, 0x4a, 0x27, 0xf4,
+	0xc6, 0xa1, 0x6e, 0x90, 0xf9, 0x07, 0x66, 0x00, 0xeb, 0xab, 0xe9, 0xc7, 0xfd, 0x9f, 0x0e, 0xdc,
+	0xb5, 0xa3, 0x39, 0xa5, 0x17, 0x6c, 0x44, 0x4b, 0xca, 0xee, 0x43, 0x5d, 0x93, 0xbc, 0x49, 0x4b,
+	0xaf, 0x2c, 0xb4, 0x07, 0xd5, 0x89, 0xdd, 0x94, 0x3e, 0x1a, 0x8f, 0xdd, 0x8e, 0x3e, 0xea, 0xaa,
+	0x17, 0x7c, 0xa2, 0x48, 0x94, 0xae, 0x26, 0x35, 0xd1, 0x7d, 0xa8, 0x25, 0xfc, 0x0b, 0x15, 0xb8,
+	0x6e, 0xfc, 0x4b, 0x43, 0x7f, 0x8b, 0xab, 0x31, 0x15, 0x12, 0xef, 0x1a, 0x88, 0x95, 0xe5, 0x3f,
+	0x84, 0x83, 0x0d, 0x60, 0xdb, 0xcc, 0x0f, 0xc7, 0xb4, 0xf9, 0x21, 0x09, 0x6d, 0xec, 0xbd, 0x22,
+	0x6a, 0x26, 0x4b, 0x5a, 0xca, 0x60, 0x55, 0xae, 0xc1, 0xaa, 0x16, 0x63, 0xb9, 0x59, 0x2c, 0xed,
+	0x5f, 0x2e, 0xdb, 0x74, 0xd7, 0x08, 0x56, 0x56, 0x66, 0x64, 0xf5, 0xec, 0xc8, 0xfc, 0x23, 0x78,
+	0x54, 0x88, 0x9a, 0x36, 0x73, 0xfc, 0xab, 0x0a, 0xd5, 0x81, 0x8c, 0xd0, 0x19, 0x40, 0xe6, 0x3f,
+	0x3a, 0xdc, 0x90, 0x47, 0x4e, 0xd6, 0xad, 0xc7, 0x65, 0x51, 0x2b, 0xb8, 0x8f, 0xd0, 0xcc, 0x2b,
+	0xfc, 0x68, 0xfb, 0x5a, 0x2e, 0xa1, 0xd5, 0xb9, 0x21, 0xc1, 0x96, 0x3e, 0x03, 0xc8, 0xe8, 0xb3,
+	0x00, 0x76, 0x1d, 0x2d, 0x82, 0xdd, 0x16, 0x28, 0x3a, 0x87, 0xdb, 0x39, 0x71, 0x7a, 0xd7, 0xb5,
+	0xb8, 0x8c, 0xb7, 0x9e, 0x94, 0xc7, 0x6d, 0xdd, 0x31, 0xa0, 0x02, 0x9d, 0x14, 0x30, 0x6d, 0x67,
+	0xb5, 0x9e, 0xfe, 0x4f, 0x56, 0xfa, 0xa5, 0x57, 0x6f, 0x7f, 0xcf, 0x3d, 0xe7, 0x6a, 0xee, 0x39,
+	0x7f, 0xe7, 0x9e, 0xf3, 0x7d, 0xe1, 0xed, 0x5c, 0x2d, 0xbc, 0x9d, 0x3f, 0x0b, 0x6f, 0xe7, 0xd3,
+	0xb3, 0x88, 0xa9, 0xf1, 0x6c, 0xd8, 0x1b, 0xf1, 0x69, 0x5f, 0xb1, 0x98, 0x90, 0x09, 0x23, 0x9f,
+	0x87, 0x44, 0x24, 0x7c, 0x26, 0xfa, 0xeb, 0xc7, 0xf5, 0x72, 0xf9, 0x0a, 0x7f, 0x4d, 0xa8, 0x1c,
+	0xd6, 0xcd, 0x03, 0xfb, 0xfc, 0x5f, 0x00, 0x00, 0x00, 0xff, 0xff, 0x0c, 0x04, 0x70, 0x2b, 0xa3,
+	0x05, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -531,6 +658,7 @@ type MsgClient interface {
 	RegisterAdmin(ctx context.Context, in *MsgRegisterAdmin, opts ...grpc.CallOption) (*MsgRegisterAdminResponse, error)
 	DeleteGrid(ctx context.Context, in *MsgDeleteGrid, opts ...grpc.CallOption) (*MsgDeleteGridResponse, error)
 	CreateDevice(ctx context.Context, in *MsgCreateDevice, opts ...grpc.CallOption) (*MsgCreateDeviceResponse, error)
+	UpdateDeviceStatus(ctx context.Context, in *MsgUpdateDeviceStatus, opts ...grpc.CallOption) (*MsgUpdateDeviceStatusResponse, error)
 }
 
 type msgClient struct {
@@ -577,12 +705,22 @@ func (c *msgClient) CreateDevice(ctx context.Context, in *MsgCreateDevice, opts 
 	return out, nil
 }
 
+func (c *msgClient) UpdateDeviceStatus(ctx context.Context, in *MsgUpdateDeviceStatus, opts ...grpc.CallOption) (*MsgUpdateDeviceStatusResponse, error) {
+	out := new(MsgUpdateDeviceStatusResponse)
+	err := c.cc.Invoke(ctx, "/microgrid.iot.Msg/UpdateDeviceStatus", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MsgServer is the server API for Msg service.
 type MsgServer interface {
 	CreateGrid(context.Context, *MsgCreateGrid) (*MsgCreateGridResponse, error)
 	RegisterAdmin(context.Context, *MsgRegisterAdmin) (*MsgRegisterAdminResponse, error)
 	DeleteGrid(context.Context, *MsgDeleteGrid) (*MsgDeleteGridResponse, error)
 	CreateDevice(context.Context, *MsgCreateDevice) (*MsgCreateDeviceResponse, error)
+	UpdateDeviceStatus(context.Context, *MsgUpdateDeviceStatus) (*MsgUpdateDeviceStatusResponse, error)
 }
 
 // UnimplementedMsgServer can be embedded to have forward compatible implementations.
@@ -600,6 +738,9 @@ func (*UnimplementedMsgServer) DeleteGrid(ctx context.Context, req *MsgDeleteGri
 }
 func (*UnimplementedMsgServer) CreateDevice(ctx context.Context, req *MsgCreateDevice) (*MsgCreateDeviceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateDevice not implemented")
+}
+func (*UnimplementedMsgServer) UpdateDeviceStatus(ctx context.Context, req *MsgUpdateDeviceStatus) (*MsgUpdateDeviceStatusResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateDeviceStatus not implemented")
 }
 
 func RegisterMsgServer(s grpc1.Server, srv MsgServer) {
@@ -678,6 +819,24 @@ func _Msg_CreateDevice_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Msg_UpdateDeviceStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgUpdateDeviceStatus)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).UpdateDeviceStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/microgrid.iot.Msg/UpdateDeviceStatus",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).UpdateDeviceStatus(ctx, req.(*MsgUpdateDeviceStatus))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Msg_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "microgrid.iot.Msg",
 	HandlerType: (*MsgServer)(nil),
@@ -697,6 +856,10 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateDevice",
 			Handler:    _Msg_CreateDevice_Handler,
+		},
+		{
+			MethodName: "UpdateDeviceStatus",
+			Handler:    _Msg_UpdateDeviceStatus_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -1003,6 +1166,88 @@ func (m *MsgCreateDeviceResponse) MarshalToSizedBuffer(dAtA []byte) (int, error)
 	return len(dAtA) - i, nil
 }
 
+func (m *MsgUpdateDeviceStatus) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgUpdateDeviceStatus) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgUpdateDeviceStatus) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.GridId != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.GridId))
+		i--
+		dAtA[i] = 0x30
+	}
+	if len(m.Addres) > 0 {
+		i -= len(m.Addres)
+		copy(dAtA[i:], m.Addres)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Addres)))
+		i--
+		dAtA[i] = 0x2a
+	}
+	if len(m.Others) > 0 {
+		i -= len(m.Others)
+		copy(dAtA[i:], m.Others)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Others)))
+		i--
+		dAtA[i] = 0x22
+	}
+	if m.Power != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Power))
+		i--
+		dAtA[i] = 0x18
+	}
+	if m.Voltage != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Voltage))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgUpdateDeviceStatusResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgUpdateDeviceStatusResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgUpdateDeviceStatusResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintTx(dAtA []byte, offset int, v uint64) int {
 	offset -= sovTx(v)
 	base := offset
@@ -1143,6 +1388,45 @@ func (m *MsgCreateDevice) Size() (n int) {
 }
 
 func (m *MsgCreateDeviceResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgUpdateDeviceStatus) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.Voltage != 0 {
+		n += 1 + sovTx(uint64(m.Voltage))
+	}
+	if m.Power != 0 {
+		n += 1 + sovTx(uint64(m.Power))
+	}
+	l = len(m.Others)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Addres)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.GridId != 0 {
+		n += 1 + sovTx(uint64(m.GridId))
+	}
+	return n
+}
+
+func (m *MsgUpdateDeviceStatusResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -2003,6 +2287,259 @@ func (m *MsgCreateDeviceResponse) Unmarshal(dAtA []byte) error {
 		}
 		if fieldNum <= 0 {
 			return fmt.Errorf("proto: MsgCreateDeviceResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgUpdateDeviceStatus) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgUpdateDeviceStatus: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgUpdateDeviceStatus: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Voltage", wireType)
+			}
+			m.Voltage = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Voltage |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Power", wireType)
+			}
+			m.Power = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Power |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 4:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Others", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Others = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 5:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Addres", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Addres = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 6:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field GridId", wireType)
+			}
+			m.GridId = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.GridId |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgUpdateDeviceStatusResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgUpdateDeviceStatusResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgUpdateDeviceStatusResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		default:

@@ -31,6 +31,7 @@ func TestDeviceGet(t *testing.T) {
 	for _, item := range items {
 		rst, found := keeper.GetDevice(ctx,
 			item.GridId,
+			item.Address,
 		)
 		require.True(t, found)
 		require.Equal(t,
@@ -45,9 +46,11 @@ func TestDeviceRemove(t *testing.T) {
 	for _, item := range items {
 		keeper.RemoveDevice(ctx,
 			item.GridId,
+			item.Address,
 		)
 		_, found := keeper.GetDevice(ctx,
 			item.GridId,
+			item.Address,
 		)
 		require.False(t, found)
 	}

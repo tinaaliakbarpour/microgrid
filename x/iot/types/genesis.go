@@ -36,7 +36,7 @@ func (gs GenesisState) Validate() error {
 	deviceIndexMap := make(map[string]struct{})
 
 	for _, elem := range gs.DeviceList {
-		index := string(DeviceKey(elem.GridId))
+		index := string(DeviceKey(elem.GridId, elem.Address))
 		if _, ok := deviceIndexMap[index]; ok {
 			return fmt.Errorf("duplicated index for device")
 		}

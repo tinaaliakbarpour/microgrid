@@ -12,6 +12,7 @@ func (k Keeper) SetDevice(ctx sdk.Context, device types.Device) {
 	b := k.cdc.MustMarshal(&device)
 	store.Set(types.DeviceKey(
 		device.GridId,
+		device.Address,
 	), b)
 }
 
@@ -19,12 +20,14 @@ func (k Keeper) SetDevice(ctx sdk.Context, device types.Device) {
 func (k Keeper) GetDevice(
 	ctx sdk.Context,
 	gridId uint64,
+	address string,
 
 ) (val types.Device, found bool) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.DeviceKeyPrefix))
 
 	b := store.Get(types.DeviceKey(
 		gridId,
+		address,
 	))
 	if b == nil {
 		return val, false
@@ -38,11 +41,13 @@ func (k Keeper) GetDevice(
 func (k Keeper) RemoveDevice(
 	ctx sdk.Context,
 	gridId uint64,
+	address string,
 
 ) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.DeviceKeyPrefix))
 	store.Delete(types.DeviceKey(
 		gridId,
+		address,
 	))
 }
 
