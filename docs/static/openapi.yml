@@ -75645,6 +75645,8 @@ definitions:
         type: array
         items:
           type: string
+  microgrid.iot.MsgCreateDeviceResponse:
+    type: object
   microgrid.iot.MsgCreateGridResponse:
     type: object
     properties:

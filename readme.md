@@ -79,3 +79,11 @@ ignite scaffold message register-admin id:uint address:string  --response grid:G
 ignite scaffold message delete-grid id:uint --module iot 
 
 ```
+
+now we go through device messages:
+
+```
+
+ignite scaffold message create-device grid-id:uint lat:int lon:int voltage:uint power:uint others:string  --module iot
+
+```

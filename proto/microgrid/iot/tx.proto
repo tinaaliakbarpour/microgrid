@@ -11,6 +11,7 @@ service Msg {
   rpc CreateGrid    (MsgCreateGrid   ) returns (MsgCreateGridResponse   );
   rpc RegisterAdmin (MsgRegisterAdmin) returns (MsgRegisterAdminResponse);
   rpc DeleteGrid    (MsgDeleteGrid   ) returns (MsgDeleteGridResponse   );
+  rpc CreateDevice  (MsgCreateDevice ) returns (MsgCreateDeviceResponse );
 }
 message MsgCreateGrid {
   string creator   = 1;
@@ -40,4 +41,16 @@ message MsgDeleteGrid {
 }
 
 message MsgDeleteGridResponse {}
+
+message MsgCreateDevice {
+  string creator = 1;
+  uint64 gridId  = 2;
+  int32  lat     = 3;
+  int32  lon     = 4;
+  uint64 voltage = 5;
+  uint64 power   = 6;
+  string others  = 7;
+}
+
+message MsgCreateDeviceResponse {}
 
