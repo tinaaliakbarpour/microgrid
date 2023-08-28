@@ -50,3 +50,25 @@ curl https://get.ignite.com/tinaaliakbarpour/microgrid@latest! | sudo bash
 - [Ignite CLI docs](https://docs.ignite.com)
 - [Cosmos SDK docs](https://docs.cosmos.network)
 - [Developer Chat](https://discord.gg/ignite)
+
+## IoT Module
+first create the chain : 
+```
+ignite scaffold chain microgrid --no-module
+```
+then we specify our module called iot:
+
+```
+ignite scaffold module iot --dep account
+```
+
+we have to specify our major objects called device and grid:
+
+```
+ignite scaffold list grid name:string center-lat:int center-lon:int  side:uint admins:array.string --no-message --module iot 
+
+ignite scaffold map device address:string lat:int lon:int power:uint voltage:uint others:string --index grid-id:uint --no-message --module iot
+
+```
+
+and now we have to create our messages to implement crud and logic on this objects.
