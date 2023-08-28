@@ -1,0 +1,16 @@
+syntax = "proto3";
+package microgrid.iot;
+
+option go_package = "github.com/tinaaliakbarpour/microgrid/x/iot/types";
+
+message Device {
+  uint64 gridId = 1; 
+  string address = 2; 
+  int32 lat = 3; 
+  int32 lon = 4; 
+  uint64 power = 5; 
+  uint64 voltage = 6; 
+  string others = 7; 
+  
+}
+

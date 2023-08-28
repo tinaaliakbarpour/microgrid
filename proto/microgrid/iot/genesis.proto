@@ -5,13 +5,15 @@ package microgrid.iot;
 import "gogoproto/gogo.proto";
 import "microgrid/iot/params.proto";
 import "microgrid/iot/grid.proto";
+import "microgrid/iot/device.proto";
 
 option go_package = "github.com/tinaaliakbarpour/microgrid/x/iot/types";
 
 // GenesisState defines the iot module's genesis state.
 message GenesisState {
-           Params params    = 1 [(gogoproto.nullable) = false];
-  repeated Grid   gridList  = 2 [(gogoproto.nullable) = false];
-           uint64 gridCount = 3;
+           Params params     = 1 [(gogoproto.nullable) = false];
+  repeated Grid   gridList   = 2 [(gogoproto.nullable) = false];
+           uint64 gridCount  = 3;
+  repeated Device deviceList = 4 [(gogoproto.nullable) = false];
 }
 

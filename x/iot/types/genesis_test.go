@@ -31,6 +31,14 @@ func TestGenesisState_Validate(t *testing.T) {
 					},
 				},
 				GridCount: 2,
+				DeviceList: []types.Device{
+					{
+						GridId: 0,
+					},
+					{
+						GridId: 1,
+					},
+				},
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,
@@ -58,6 +66,20 @@ func TestGenesisState_Validate(t *testing.T) {
 					},
 				},
 				GridCount: 0,
+			},
+			valid: false,
+		},
+		{
+			desc: "duplicated device",
+			genState: &types.GenesisState{
+				DeviceList: []types.Device{
+					{
+						GridId: 0,
+					},
+					{
+						GridId: 0,
+					},
+				},
 			},
 			valid: false,
 		},

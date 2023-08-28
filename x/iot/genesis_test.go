@@ -23,6 +23,14 @@ func TestGenesis(t *testing.T) {
 			},
 		},
 		GridCount: 2,
+		DeviceList: []types.Device{
+			{
+				GridId: 0,
+			},
+			{
+				GridId: 1,
+			},
+		},
 		// this line is used by starport scaffolding # genesis/test/state
 	}
 
@@ -36,5 +44,6 @@ func TestGenesis(t *testing.T) {
 
 	require.ElementsMatch(t, genesisState.GridList, got.GridList)
 	require.Equal(t, genesisState.GridCount, got.GridCount)
+	require.ElementsMatch(t, genesisState.DeviceList, got.DeviceList)
 	// this line is used by starport scaffolding # genesis/test/assert
 }

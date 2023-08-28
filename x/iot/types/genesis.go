@@ -10,7 +10,8 @@ const DefaultIndex uint64 = 1
 // DefaultGenesis returns the default genesis state
 func DefaultGenesis() *GenesisState {
 	return &GenesisState{
-		GridList: []Grid{},
+		GridList:   []Grid{},
+		DeviceList: []Device{},
 		// this line is used by starport scaffolding # genesis/types/default
 		Params: DefaultParams(),
 	}
@@ -30,6 +31,16 @@ func (gs GenesisState) Validate() error {
 			return fmt.Errorf("grid id should be lower or equal than the last id")
 		}
 		gridIdMap[elem.Id] = true
+	}
+	// Check for duplicated index in device
+	deviceIndexMap := make(map[string]struct{})
+
+	for _, elem := range gs.DeviceList {
+		index := string(DeviceKey(elem.GridId))
+		if _, ok := deviceIndexMap[index]; ok {
+			return fmt.Errorf("duplicated index for device")
+		}
+		deviceIndexMap[index] = struct{}{}
 	}
 	// this line is used by starport scaffolding # genesis/types/validate
 
