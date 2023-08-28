@@ -75651,6 +75651,8 @@ definitions:
       id:
         type: string
         format: uint64
+  microgrid.iot.MsgDeleteGridResponse:
+    type: object
   microgrid.iot.MsgRegisterAdminResponse:
     type: object
     properties:

@@ -10,6 +10,7 @@ option go_package = "github.com/tinaaliakbarpour/microgrid/x/iot/types";
 service Msg {
   rpc CreateGrid    (MsgCreateGrid   ) returns (MsgCreateGridResponse   );
   rpc RegisterAdmin (MsgRegisterAdmin) returns (MsgRegisterAdminResponse);
+  rpc DeleteGrid    (MsgDeleteGrid   ) returns (MsgDeleteGridResponse   );
 }
 message MsgCreateGrid {
   string creator   = 1;
@@ -32,4 +33,11 @@ message MsgRegisterAdmin {
 message MsgRegisterAdminResponse {
   Grid grid = 1;
 }
+
+message MsgDeleteGrid {
+  string creator = 1;
+  uint64 id      = 2;
+}
+
+message MsgDeleteGridResponse {}
 

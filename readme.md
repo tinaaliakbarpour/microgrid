@@ -72,3 +72,10 @@ ignite scaffold map device address:string lat:int lon:int power:uint voltage:uin
 ```
 
 and now we have to create our messages to implement crud and logic on this objects.
+
+```
+ignite scaffold message create-grid name center-lat:int center-lon:int side:uint --response id:uint --module iot
+ignite scaffold message register-admin id:uint address:string  --response grid:Grid --module iot
+ignite scaffold message delete-grid id:uint --module iot 
+
+```
