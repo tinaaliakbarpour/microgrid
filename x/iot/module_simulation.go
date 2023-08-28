@@ -27,6 +27,10 @@ const (
 	// TODO: Determine the simulation weight value
 	defaultWeightMsgCreateGrid int = 100
 
+	opWeightMsgRegisterAdmin = "op_weight_msg_register_admin"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgRegisterAdmin int = 100
+
 	// this line is used by starport scaffolding # simapp/module/const
 )
 
@@ -66,6 +70,17 @@ func (am AppModule) WeightedOperations(simState module.SimulationState) []simtyp
 		iotsimulation.SimulateMsgCreateGrid(am.accountKeeper, am.bankKeeper, am.keeper),
 	))
 
+	var weightMsgRegisterAdmin int
+	simState.AppParams.GetOrGenerate(simState.Cdc, opWeightMsgRegisterAdmin, &weightMsgRegisterAdmin, nil,
+		func(_ *rand.Rand) {
+			weightMsgRegisterAdmin = defaultWeightMsgRegisterAdmin
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgRegisterAdmin,
+		iotsimulation.SimulateMsgRegisterAdmin(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
 	// this line is used by starport scaffolding # simapp/module/operation
 
 	return operations
@@ -79,6 +94,14 @@ func (am AppModule) ProposalMsgs(simState module.SimulationState) []simtypes.Wei
 			defaultWeightMsgCreateGrid,
 			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
 				iotsimulation.SimulateMsgCreateGrid(am.accountKeeper, am.bankKeeper, am.keeper)
+				return nil
+			},
+		),
+		simulation.NewWeightedProposalMsg(
+			opWeightMsgRegisterAdmin,
+			defaultWeightMsgRegisterAdmin,
+			func(r *rand.Rand, ctx sdk.Context, accs []simtypes.Account) sdk.Msg {
+				iotsimulation.SimulateMsgRegisterAdmin(am.accountKeeper, am.bankKeeper, am.keeper)
 				return nil
 			},
 		),

@@ -147,33 +147,144 @@ func (m *MsgCreateGridResponse) GetId() uint64 {
 	return 0
 }
 
+type MsgRegisterAdmin struct {
+	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Id      uint64 `protobuf:"varint,2,opt,name=id,proto3" json:"id,omitempty"`
+	Address string `protobuf:"bytes,3,opt,name=address,proto3" json:"address,omitempty"`
+}
+
+func (m *MsgRegisterAdmin) Reset()         { *m = MsgRegisterAdmin{} }
+func (m *MsgRegisterAdmin) String() string { return proto.CompactTextString(m) }
+func (*MsgRegisterAdmin) ProtoMessage()    {}
+func (*MsgRegisterAdmin) Descriptor() ([]byte, []int) {
+	return fileDescriptor_9a5300a5bade0bae, []int{2}
+}
+func (m *MsgRegisterAdmin) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgRegisterAdmin) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgRegisterAdmin.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgRegisterAdmin) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgRegisterAdmin.Merge(m, src)
+}
+func (m *MsgRegisterAdmin) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgRegisterAdmin) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgRegisterAdmin.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgRegisterAdmin proto.InternalMessageInfo
+
+func (m *MsgRegisterAdmin) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgRegisterAdmin) GetId() uint64 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+func (m *MsgRegisterAdmin) GetAddress() string {
+	if m != nil {
+		return m.Address
+	}
+	return ""
+}
+
+type MsgRegisterAdminResponse struct {
+	Grid *Grid `protobuf:"bytes,1,opt,name=grid,proto3" json:"grid,omitempty"`
+}
+
+func (m *MsgRegisterAdminResponse) Reset()         { *m = MsgRegisterAdminResponse{} }
+func (m *MsgRegisterAdminResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgRegisterAdminResponse) ProtoMessage()    {}
+func (*MsgRegisterAdminResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_9a5300a5bade0bae, []int{3}
+}
+func (m *MsgRegisterAdminResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgRegisterAdminResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgRegisterAdminResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgRegisterAdminResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgRegisterAdminResponse.Merge(m, src)
+}
+func (m *MsgRegisterAdminResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgRegisterAdminResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgRegisterAdminResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgRegisterAdminResponse proto.InternalMessageInfo
+
+func (m *MsgRegisterAdminResponse) GetGrid() *Grid {
+	if m != nil {
+		return m.Grid
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*MsgCreateGrid)(nil), "microgrid.iot.MsgCreateGrid")
 	proto.RegisterType((*MsgCreateGridResponse)(nil), "microgrid.iot.MsgCreateGridResponse")
+	proto.RegisterType((*MsgRegisterAdmin)(nil), "microgrid.iot.MsgRegisterAdmin")
+	proto.RegisterType((*MsgRegisterAdminResponse)(nil), "microgrid.iot.MsgRegisterAdminResponse")
 }
 
 func init() { proto.RegisterFile("microgrid/iot/tx.proto", fileDescriptor_9a5300a5bade0bae) }
 
 var fileDescriptor_9a5300a5bade0bae = []byte{
-	// 275 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x50, 0xcb, 0x4a, 0xc3, 0x40,
-	0x14, 0xcd, 0xa4, 0xa9, 0xd2, 0x81, 0xba, 0x18, 0x50, 0x06, 0x29, 0x43, 0x28, 0x82, 0x59, 0x25,
-	0xa8, 0x7f, 0xa0, 0x0b, 0x17, 0x5a, 0x90, 0x6c, 0x04, 0x77, 0x93, 0x64, 0x88, 0x17, 0xcd, 0xdc,
-	0x30, 0x33, 0x85, 0xfa, 0x11, 0x82, 0x9f, 0xe5, 0xb2, 0x4b, 0x97, 0x92, 0xfc, 0x88, 0x74, 0xa4,
-	0xb6, 0xd9, 0xb8, 0x3b, 0x0f, 0x38, 0xf7, 0xdc, 0x43, 0x4f, 0x1a, 0x28, 0x0d, 0xd6, 0x06, 0xaa,
-	0x0c, 0xd0, 0x65, 0x6e, 0x95, 0xb6, 0x06, 0x1d, 0xb2, 0xe9, 0x9f, 0x9e, 0x02, 0xba, 0xf9, 0x3b,
-	0xa1, 0xd3, 0x85, 0xad, 0x6f, 0x8c, 0x92, 0x4e, 0xdd, 0x1a, 0xa8, 0x18, 0xa7, 0x87, 0xe5, 0x86,
-	0xa1, 0xe1, 0x24, 0x26, 0xc9, 0x24, 0xdf, 0x52, 0xc6, 0x68, 0xa4, 0x65, 0xa3, 0x78, 0xe8, 0x65,
-	0x8f, 0xd9, 0x8c, 0x4e, 0x4a, 0xa5, 0x9d, 0x32, 0xf7, 0xd2, 0xf1, 0x51, 0x4c, 0x92, 0x71, 0xbe,
-	0x13, 0xf6, 0x5c, 0xd4, 0x3c, 0x1a, 0xb8, 0xa8, 0x37, 0x79, 0x16, 0x2a, 0xc5, 0xc7, 0x31, 0x49,
-	0xa2, 0xdc, 0xe3, 0xf9, 0x39, 0x3d, 0x1e, 0xd4, 0xc9, 0x95, 0x6d, 0x51, 0x5b, 0xc5, 0x8e, 0x68,
-	0x08, 0x95, 0x6f, 0x14, 0xe5, 0x21, 0x54, 0x97, 0x8f, 0x74, 0xb4, 0xb0, 0x35, 0x7b, 0xa0, 0x74,
-	0xaf, 0xfb, 0x2c, 0x1d, 0x7c, 0x97, 0x0e, 0xa2, 0x4e, 0xcf, 0xfe, 0x73, 0xb7, 0x87, 0xae, 0xef,
-	0x3e, 0x3b, 0x41, 0xd6, 0x9d, 0x20, 0xdf, 0x9d, 0x20, 0x1f, 0xbd, 0x08, 0xd6, 0xbd, 0x08, 0xbe,
-	0x7a, 0x11, 0x3c, 0x5d, 0xd4, 0xe0, 0x9e, 0x97, 0x45, 0x5a, 0x62, 0x93, 0x39, 0xd0, 0x52, 0xbe,
-	0x82, 0x7c, 0x29, 0xa4, 0x69, 0x71, 0x69, 0xb2, 0xdd, 0xdc, 0xab, 0xdf, 0xc1, 0xdf, 0x5a, 0x65,
-	0x8b, 0x03, 0x3f, 0xfa, 0xd5, 0x4f, 0x00, 0x00, 0x00, 0xff, 0xff, 0x64, 0x53, 0x3a, 0xea, 0x8e,
-	0x01, 0x00, 0x00,
+	// 359 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x52, 0xc1, 0x4a, 0xc3, 0x40,
+	0x10, 0xed, 0xa6, 0xa9, 0xd2, 0x91, 0x8a, 0x44, 0x94, 0xa5, 0x94, 0x58, 0x82, 0xd0, 0x9e, 0x12,
+	0xac, 0x5f, 0xa0, 0x3d, 0x78, 0xd0, 0x82, 0xe4, 0x20, 0xe8, 0x6d, 0x9b, 0x5d, 0xe2, 0xa2, 0xc9,
+	0x86, 0xdd, 0x2d, 0xd4, 0x8f, 0x10, 0xfc, 0x16, 0xbf, 0xc2, 0x63, 0x8f, 0x1e, 0xa5, 0xfd, 0x11,
+	0xc9, 0x96, 0xb4, 0xdd, 0x0a, 0xf5, 0x36, 0xf3, 0xe6, 0xbd, 0xc7, 0x9b, 0x61, 0xe0, 0x34, 0xe3,
+	0x89, 0x14, 0xa9, 0xe4, 0x34, 0xe2, 0x42, 0x47, 0x7a, 0x1a, 0x16, 0x52, 0x68, 0xe1, 0xb5, 0x56,
+	0x78, 0xc8, 0x85, 0x6e, 0x63, 0x9b, 0x66, 0x70, 0x43, 0x0c, 0xde, 0x11, 0xb4, 0x46, 0x2a, 0x1d,
+	0x4a, 0x46, 0x34, 0xbb, 0x91, 0x9c, 0x7a, 0x18, 0xf6, 0x93, 0xb2, 0x13, 0x12, 0xa3, 0x2e, 0xea,
+	0x37, 0xe3, 0xaa, 0xf5, 0x3c, 0x70, 0x73, 0x92, 0x31, 0xec, 0x18, 0xd8, 0xd4, 0x5e, 0x07, 0x9a,
+	0x09, 0xcb, 0x35, 0x93, 0x77, 0x44, 0xe3, 0x7a, 0x17, 0xf5, 0x1b, 0xf1, 0x1a, 0xd8, 0x98, 0x8a,
+	0x1c, 0xbb, 0xd6, 0x54, 0xe4, 0xa5, 0x9f, 0xe2, 0x94, 0xe1, 0x46, 0x17, 0xf5, 0xdd, 0xd8, 0xd4,
+	0x41, 0x0f, 0x4e, 0xac, 0x38, 0x31, 0x53, 0x85, 0xc8, 0x15, 0xf3, 0x0e, 0xc1, 0xe1, 0xd4, 0x24,
+	0x72, 0x63, 0x87, 0xd3, 0xe0, 0x01, 0x8e, 0x46, 0x2a, 0x8d, 0x59, 0xca, 0x95, 0x66, 0xf2, 0x8a,
+	0x66, 0x3c, 0xdf, 0x11, 0x7d, 0xa9, 0x76, 0x2a, 0x75, 0xc9, 0x24, 0x94, 0x4a, 0xa6, 0x94, 0x09,
+	0xdd, 0x8c, 0xab, 0x36, 0x18, 0x02, 0xde, 0xf6, 0x5d, 0x65, 0xe8, 0x81, 0x5b, 0x9e, 0xce, 0x98,
+	0x1f, 0x0c, 0x8e, 0x43, 0xeb, 0xc8, 0xa1, 0x89, 0x6b, 0x08, 0x83, 0x4f, 0x04, 0xf5, 0x91, 0x4a,
+	0xbd, 0x7b, 0x80, 0x8d, 0xcb, 0x76, 0xb6, 0x04, 0xd6, 0xa2, 0xed, 0xf3, 0x5d, 0xd3, 0x55, 0x84,
+	0x47, 0x68, 0xd9, 0x3b, 0x9f, 0xfd, 0x95, 0x59, 0x84, 0x76, 0xef, 0x1f, 0x42, 0x65, 0x7d, 0x7d,
+	0xfb, 0x35, 0xf7, 0xd1, 0x6c, 0xee, 0xa3, 0x9f, 0xb9, 0x8f, 0x3e, 0x16, 0x7e, 0x6d, 0xb6, 0xf0,
+	0x6b, 0xdf, 0x0b, 0xbf, 0xf6, 0x74, 0x91, 0x72, 0xfd, 0x3c, 0x19, 0x87, 0x89, 0xc8, 0x22, 0xcd,
+	0x73, 0x42, 0x5e, 0x39, 0x79, 0x19, 0x13, 0x59, 0x88, 0x89, 0x8c, 0xd6, 0xaf, 0x35, 0x5d, 0xfe,
+	0xe0, 0x5b, 0xc1, 0xd4, 0x78, 0xcf, 0xbc, 0xd7, 0xe5, 0x6f, 0x00, 0x00, 0x00, 0xff, 0xff, 0xbe,
+	0xbf, 0x4f, 0x41, 0xa1, 0x02, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -189,6 +300,7 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type MsgClient interface {
 	CreateGrid(ctx context.Context, in *MsgCreateGrid, opts ...grpc.CallOption) (*MsgCreateGridResponse, error)
+	RegisterAdmin(ctx context.Context, in *MsgRegisterAdmin, opts ...grpc.CallOption) (*MsgRegisterAdminResponse, error)
 }
 
 type msgClient struct {
@@ -208,9 +320,19 @@ func (c *msgClient) CreateGrid(ctx context.Context, in *MsgCreateGrid, opts ...g
 	return out, nil
 }
 
+func (c *msgClient) RegisterAdmin(ctx context.Context, in *MsgRegisterAdmin, opts ...grpc.CallOption) (*MsgRegisterAdminResponse, error) {
+	out := new(MsgRegisterAdminResponse)
+	err := c.cc.Invoke(ctx, "/microgrid.iot.Msg/RegisterAdmin", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MsgServer is the server API for Msg service.
 type MsgServer interface {
 	CreateGrid(context.Context, *MsgCreateGrid) (*MsgCreateGridResponse, error)
+	RegisterAdmin(context.Context, *MsgRegisterAdmin) (*MsgRegisterAdminResponse, error)
 }
 
 // UnimplementedMsgServer can be embedded to have forward compatible implementations.
@@ -219,6 +341,9 @@ type UnimplementedMsgServer struct {
 
 func (*UnimplementedMsgServer) CreateGrid(ctx context.Context, req *MsgCreateGrid) (*MsgCreateGridResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateGrid not implemented")
+}
+func (*UnimplementedMsgServer) RegisterAdmin(ctx context.Context, req *MsgRegisterAdmin) (*MsgRegisterAdminResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RegisterAdmin not implemented")
 }
 
 func RegisterMsgServer(s grpc1.Server, srv MsgServer) {
@@ -243,6 +368,24 @@ func _Msg_CreateGrid_Handler(srv interface{}, ctx context.Context, dec func(inte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Msg_RegisterAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgRegisterAdmin)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).RegisterAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/microgrid.iot.Msg/RegisterAdmin",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).RegisterAdmin(ctx, req.(*MsgRegisterAdmin))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Msg_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "microgrid.iot.Msg",
 	HandlerType: (*MsgServer)(nil),
@@ -250,6 +393,10 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateGrid",
 			Handler:    _Msg_CreateGrid_Handler,
+		},
+		{
+			MethodName: "RegisterAdmin",
+			Handler:    _Msg_RegisterAdmin_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -336,6 +483,83 @@ func (m *MsgCreateGridResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
+func (m *MsgRegisterAdmin) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgRegisterAdmin) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgRegisterAdmin) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Address) > 0 {
+		i -= len(m.Address)
+		copy(dAtA[i:], m.Address)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Address)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if m.Id != 0 {
+		i = encodeVarintTx(dAtA, i, uint64(m.Id))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgRegisterAdminResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgRegisterAdminResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgRegisterAdminResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Grid != nil {
+		{
+			size, err := m.Grid.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintTx(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintTx(dAtA []byte, offset int, v uint64) int {
 	offset -= sovTx(v)
 	base := offset
@@ -381,6 +605,39 @@ func (m *MsgCreateGridResponse) Size() (n int) {
 	_ = l
 	if m.Id != 0 {
 		n += 1 + sovTx(uint64(m.Id))
+	}
+	return n
+}
+
+func (m *MsgRegisterAdmin) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if m.Id != 0 {
+		n += 1 + sovTx(uint64(m.Id))
+	}
+	l = len(m.Address)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgRegisterAdminResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Grid != nil {
+		l = m.Grid.Size()
+		n += 1 + l + sovTx(uint64(l))
 	}
 	return n
 }
@@ -610,6 +867,225 @@ func (m *MsgCreateGridResponse) Unmarshal(dAtA []byte) error {
 					break
 				}
 			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgRegisterAdmin) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgRegisterAdmin: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgRegisterAdmin: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Id", wireType)
+			}
+			m.Id = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Id |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Address", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Address = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgRegisterAdminResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgRegisterAdminResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgRegisterAdminResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Grid", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Grid == nil {
+				m.Grid = &Grid{}
+			}
+			if err := m.Grid.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
 			skippy, err := skipTx(dAtA[iNdEx:])

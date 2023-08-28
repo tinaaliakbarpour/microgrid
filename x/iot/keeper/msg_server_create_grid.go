@@ -23,3 +23,5 @@ func (k msgServer) CreateGrid(goCtx context.Context, msg *types.MsgCreateGrid) (
 
 	return &types.MsgCreateGridResponse{Id: id}, nil
 }
+
+//TODO : may be we need some authentication on creator account

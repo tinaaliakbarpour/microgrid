@@ -75651,6 +75651,30 @@ definitions:
       id:
         type: string
         format: uint64
+  microgrid.iot.MsgRegisterAdminResponse:
+    type: object
+    properties:
+      grid:
+        type: object
+        properties:
+          id:
+            type: string
+            format: uint64
+          name:
+            type: string
+          centerLat:
+            type: integer
+            format: int32
+          centerLon:
+            type: integer
+            format: int32
+          side:
+            type: string
+            format: uint64
+          admins:
+            type: array
+            items:
+              type: string
   microgrid.iot.Params:
     type: object
     description: Params defines the parameters for the module.
