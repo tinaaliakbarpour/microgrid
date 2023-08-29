@@ -141,10 +141,6 @@ func local_request_Query_GridAll_0(ctx context.Context, marshaler runtime.Marsha
 
 }
 
-var (
-	filter_Query_Device_0 = &utilities.DoubleArray{Encoding: map[string]int{"gridId": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
-)
-
 func request_Query_Device_0(ctx context.Context, marshaler runtime.Marshaler, client QueryClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq QueryGetDeviceRequest
 	var metadata runtime.ServerMetadata
@@ -167,11 +163,15 @@ func request_Query_Device_0(ctx context.Context, marshaler runtime.Marshaler, cl
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "gridId", err)
 	}
 
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	val, ok = pathParams["address"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "address")
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Query_Device_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+
+	protoReq.Address, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "address", err)
 	}
 
 	msg, err := client.Device(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -201,11 +201,15 @@ func local_request_Query_Device_0(ctx context.Context, marshaler runtime.Marshal
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "gridId", err)
 	}
 
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	val, ok = pathParams["address"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "address")
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Query_Device_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+
+	protoReq.Address, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "address", err)
 	}
 
 	msg, err := server.Device(ctx, &protoReq)
@@ -521,7 +525,7 @@ var (
 
 	pattern_Query_GridAll_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"tinaaliakbarpour", "microgrid", "iot", "grid"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_Query_Device_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"tinaaliakbarpour", "microgrid", "iot", "device", "gridId"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_Query_Device_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"tinaaliakbarpour", "microgrid", "iot", "device", "gridId", "address"}, "", runtime.AssumeColonVerbOpt(true)))
 
 	pattern_Query_DeviceAll_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"tinaaliakbarpour", "microgrid", "iot", "device"}, "", runtime.AssumeColonVerbOpt(true)))
 )

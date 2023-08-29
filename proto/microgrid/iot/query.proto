@@ -32,7 +32,7 @@ service Query {
   
   // // Queries a list of Device items.
   rpc Device    (QueryGetDeviceRequest) returns (QueryGetDeviceResponse) {
-    option (google.api.http).get = "/tinaaliakbarpour/microgrid/iot/device/{gridId}";
+    option (google.api.http).get = "/tinaaliakbarpour/microgrid/iot/device/{gridId}/{address}";
   
   }
   rpc DeviceAll (QueryAllDeviceRequest) returns (QueryAllDeviceResponse) {
@@ -78,6 +78,7 @@ message QueryGetDeviceRequest {
   string address = 2;
 }
 
+
 message QueryGetDeviceResponse {
   Device device = 1 [(gogoproto.nullable) = false];
 }
@@ -91,12 +92,5 @@ message QueryAllDeviceResponse {
            cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 
-// message QueryShowDeviceRequest {
-//   uint64 gridId  = 1;
-//   string address = 2;
-// }
 
-// message QueryShowDeviceResponse {
-//   Device device = 1;
-// }
 

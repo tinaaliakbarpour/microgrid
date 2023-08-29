@@ -46575,9 +46575,9 @@ paths:
           type: boolean
       tags:
         - Query
-  /tinaaliakbarpour/microgrid/iot/device/{gridId}:
+  /tinaaliakbarpour/microgrid/iot/device/{gridId}/{address}:
     get:
-      summary: Queries a list of Device items.
+      summary: // Queries a list of Device items.
       operationId: MicrogridIotDevice
       responses:
         '200':
@@ -46631,6 +46631,10 @@ paths:
           required: true
           type: string
           format: uint64
+        - name: address
+          in: path
+          required: true
+          type: string
       tags:
         - Query
   /tinaaliakbarpour/microgrid/iot/grid:

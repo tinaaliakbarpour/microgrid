@@ -47,9 +47,9 @@ func CmdListDevice() *cobra.Command {
 
 func CmdShowDevice() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "show-device [grid-id]",
+		Use:   "show-device [grid-id] [address]",
 		Short: "shows a device",
-		Args:  cobra.ExactArgs(1),
+		Args:  cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
 			clientCtx, err := client.GetClientQueryContext(cmd)
 			if err != nil {
@@ -62,9 +62,14 @@ func CmdShowDevice() *cobra.Command {
 			if err != nil {
 				return err
 			}
+			argAddress, err := cast.ToStringE(args[1])
+			if err != nil {
+				return err
+			}
 
 			params := &types.QueryGetDeviceRequest{
-				GridId: argGridId,
+				GridId:  argGridId,
+				Address: argAddress,
 			}
 
 			res, err := queryClient.Device(cmd.Context(), params)
