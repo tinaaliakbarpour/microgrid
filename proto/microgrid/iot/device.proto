@@ -11,6 +11,5 @@ message Device {
   uint64 power = 5; 
   uint64 voltage = 6; 
   string others = 7; 
-  
 }
 

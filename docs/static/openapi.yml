@@ -46831,6 +46831,66 @@ paths:
           format: uint64
       tags:
         - Query
+  /tinaaliakbarpour/microgrid/iot/list_device_by_grid_id/{gridId}:
+    get:
+      summary: Queries a list of ListDeviceByGridId items.
+      operationId: MicrogridIotListDeviceByGridId
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              device:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    gridId:
+                      type: string
+                      format: uint64
+                    address:
+                      type: string
+                    lat:
+                      type: integer
+                      format: int32
+                    lon:
+                      type: integer
+                      format: int32
+                    power:
+                      type: string
+                      format: uint64
+                    voltage:
+                      type: string
+                      format: uint64
+                    others:
+                      type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: gridId
+          in: path
+          required: true
+          type: string
+          format: uint64
+      tags:
+        - Query
   /tinaaliakbarpour/microgrid/iot/params:
     get:
       summary: Parameters queries the parameters of the module.
@@ -75843,6 +75903,33 @@ definitions:
           admins:
             type: array
             items:
+              type: string
+  microgrid.iot.QueryListDeviceByGridIdResponse:
+    type: object
+    properties:
+      device:
+        type: array
+        items:
+          type: object
+          properties:
+            gridId:
+              type: string
+              format: uint64
+            address:
+              type: string
+            lat:
+              type: integer
+              format: int32
+            lon:
+              type: integer
+              format: int32
+            power:
+              type: string
+              format: uint64
+            voltage:
+              type: string
+              format: uint64
+            others:
               type: string
   microgrid.iot.QueryParamsResponse:
     type: object

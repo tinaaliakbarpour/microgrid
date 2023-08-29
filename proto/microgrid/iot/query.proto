@@ -39,12 +39,18 @@ service Query {
     option (google.api.http).get = "/tinaaliakbarpour/microgrid/iot/device";
   
   }
-  
+
   // // Queries a list of ShowDevice items.
   // rpc ShowDevice (QueryShowDeviceRequest) returns (QueryShowDeviceResponse) {
   //   option (google.api.http).get = "/tinaaliakbarpour/microgrid/iot/show_device/{gridId}/{address}";
-  
+
   // }
+  
+  // Queries a list of ListDeviceByGridId items.
+  rpc ListDeviceByGridId (QueryListDeviceByGridIdRequest) returns (QueryListDeviceByGridIdResponse) {
+    option (google.api.http).get = "/tinaaliakbarpour/microgrid/iot/list_device_by_grid_id/{gridId}";
+  
+  }
 }
 // QueryParamsRequest is request type for the Query/Params RPC method.
 message QueryParamsRequest {}
@@ -74,10 +80,9 @@ message QueryAllGridResponse {
 }
 
 message QueryGetDeviceRequest {
-  uint64 gridId = 1;
+  uint64 gridId  = 1;
   string address = 2;
 }
-
 
 message QueryGetDeviceResponse {
   Device device = 1 [(gogoproto.nullable) = false];
@@ -92,5 +97,11 @@ message QueryAllDeviceResponse {
            cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 
+message QueryListDeviceByGridIdRequest {
+  uint64 gridId = 1;
+}
 
+message QueryListDeviceByGridIdResponse {
+  repeated Device device = 1;
+}
 
