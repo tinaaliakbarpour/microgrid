@@ -18,12 +18,14 @@ func TestMsgRegisterAdmin_ValidateBasic(t *testing.T) {
 			name: "invalid address",
 			msg: MsgRegisterAdmin{
 				Creator: "invalid_address",
+				Address: sample.AccAddress(),
 			},
 			err: sdkerrors.ErrInvalidAddress,
 		}, {
 			name: "valid address",
 			msg: MsgRegisterAdmin{
 				Creator: sample.AccAddress(),
+				Address: sample.AccAddress(),
 			},
 		},
 	}

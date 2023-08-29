@@ -25,3 +25,4 @@ func (k msgServer) CreateGrid(goCtx context.Context, msg *types.MsgCreateGrid) (
 }
 
 //TODO : may be we need some authentication on creator account
+//TODO: is there any mechanism for storing duplicate values

@@ -46,5 +46,10 @@ func (msg *MsgUpdateDeviceStatus) ValidateBasic() error {
 	if err != nil {
 		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)
 	}
+	if _, err := sdk.AccAddressFromBech32(msg.Addres); err != nil {
+		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)
+	}
 	return nil
 }
+
+//TODO: we can have all the validations and acl here

@@ -13,7 +13,7 @@ func (k msgServer) DeleteDevice(goCtx context.Context, msg *types.MsgDeleteDevic
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
 	if _, found := k.GetDevice(ctx, msg.GridId, msg.Address); !found {
-		return nil, sdkerrors.Wrap(sdkerrors.ErrKeyNotFound, fmt.Sprintf("key %d-%ddoesn't exist", msg.GridId, msg.Address))
+		return nil, sdkerrors.Wrap(sdkerrors.ErrKeyNotFound, fmt.Sprintf("key %d-%s doesn't exist", msg.GridId, msg.Address))
 	}
 	k.RemoveDevice(ctx, msg.GridId, msg.Address)
 	return &types.MsgDeleteDeviceResponse{}, nil

@@ -18,12 +18,14 @@ func TestMsgUpdateDeviceStatus_ValidateBasic(t *testing.T) {
 			name: "invalid address",
 			msg: MsgUpdateDeviceStatus{
 				Creator: "invalid_address",
+				Addres:  sample.AccAddress(),
 			},
 			err: sdkerrors.ErrInvalidAddress,
 		}, {
 			name: "valid address",
 			msg: MsgUpdateDeviceStatus{
 				Creator: sample.AccAddress(),
+				Addres:  sample.AccAddress(),
 			},
 		},
 	}

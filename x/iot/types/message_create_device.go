@@ -47,5 +47,12 @@ func (msg *MsgCreateDevice) ValidateBasic() error {
 	if err != nil {
 		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)
 	}
+
+	if msg.Lat == 0 || msg.Lon == 0 {
+		return sdkerrors.Wrapf(ErrorInvalidInput, "invalid creator address (%s)", err)
+	}
+
 	return nil
 }
+
+//TODO: we can add all the simple validation that we want

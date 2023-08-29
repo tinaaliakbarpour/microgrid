@@ -18,12 +18,14 @@ func TestMsgDeleteDevice_ValidateBasic(t *testing.T) {
 			name: "invalid address",
 			msg: MsgDeleteDevice{
 				Creator: "invalid_address",
+				Address: sample.AccAddress(),
 			},
 			err: sdkerrors.ErrInvalidAddress,
 		}, {
 			name: "valid address",
 			msg: MsgDeleteDevice{
 				Creator: sample.AccAddress(),
+				Address: sample.AccAddress(),
 			},
 		},
 	}

@@ -48,6 +48,7 @@ func TestShowDevice(t *testing.T) {
 	tests := []struct {
 		desc     string
 		idGridId uint64
+		address  string
 
 		args []string
 		err  error
@@ -56,6 +57,7 @@ func TestShowDevice(t *testing.T) {
 		{
 			desc:     "found",
 			idGridId: objs[0].GridId,
+			address:  objs[1].Address,
 
 			args: common,
 			obj:  objs[0],
@@ -72,6 +74,7 @@ func TestShowDevice(t *testing.T) {
 		t.Run(tc.desc, func(t *testing.T) {
 			args := []string{
 				strconv.Itoa(int(tc.idGridId)),
+				tc.address,
 			}
 			args = append(args, tc.args...)
 			out, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdShowDevice(), args)

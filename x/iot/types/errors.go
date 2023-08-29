@@ -8,5 +8,7 @@ import (
 
 // x/iot module sentinel errors
 var (
-	ErrSample = sdkerrors.Register(ModuleName, 1100, "sample error")
+	ErrSample         = sdkerrors.Register(ModuleName, 1100, "sample error")
+	ErrorDuplicate    = sdkerrors.Register(ModuleName, 1101, "duplicate key")
+	ErrorInvalidInput = sdkerrors.Register(ModuleName, 1102, "invalid input")
 )

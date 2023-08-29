@@ -45,6 +45,7 @@ func (msg *MsgCreateGrid) ValidateBasic() error {
 	if err != nil {
 		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)
 	}
-	//todo : we can add basic validation for type create grid on lat lon and side and also name
 	return nil
 }
+
+//TODO : we can add basic validation for type create grid on lat lon and side and also name

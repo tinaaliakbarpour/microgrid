@@ -43,5 +43,11 @@ func (msg *MsgDeleteDevice) ValidateBasic() error {
 	if err != nil {
 		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)
 	}
+	if _, err := sdk.AccAddressFromBech32(msg.Address); err != nil {
+		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)
+	}
 	return nil
 }
+
+//TODO: we can have all the validation here also we can check whether this address has the access to
+//submit this change. we can have our own authentication

@@ -39,12 +39,6 @@ service Query {
     option (google.api.http).get = "/tinaaliakbarpour/microgrid/iot/device";
   
   }
-
-  // // Queries a list of ShowDevice items.
-  // rpc ShowDevice (QueryShowDeviceRequest) returns (QueryShowDeviceResponse) {
-  //   option (google.api.http).get = "/tinaaliakbarpour/microgrid/iot/show_device/{gridId}/{address}";
-
-  // }
   
   // Queries a list of ListDeviceByGridId items.
   rpc ListDeviceByGridId (QueryListDeviceByGridIdRequest) returns (QueryListDeviceByGridIdResponse) {
