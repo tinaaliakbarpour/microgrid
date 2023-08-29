@@ -93,9 +93,11 @@ message QueryAllDeviceResponse {
 
 message QueryListDeviceByGridIdRequest {
   uint64 gridId = 1;
+         cosmos.base.query.v1beta1.PageRequest pagination = 2;
 }
 
 message QueryListDeviceByGridIdResponse {
   repeated Device device = 1;
+           cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 
