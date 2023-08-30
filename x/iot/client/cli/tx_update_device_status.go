@@ -15,9 +15,9 @@ var _ = strconv.Itoa(0)
 
 func CmdUpdateDeviceStatus() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "update-device-status [voltage] [power] [others] [addres] [grid-id]",
+		Use:   "update-device-status [voltage] [power] [others] [grid-id]",
 		Short: "Broadcast message update-device-status",
-		Args:  cobra.ExactArgs(5),
+		Args:  cobra.ExactArgs(4),
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
 			argVoltage, err := cast.ToUint64E(args[0])
 			if err != nil {
@@ -28,8 +28,7 @@ func CmdUpdateDeviceStatus() *cobra.Command {
 				return err
 			}
 			argOthers := args[2]
-			argAddres := args[3]
-			argGridId, err := cast.ToUint64E(args[4])
+			argGridId, err := cast.ToUint64E(args[3])
 			if err != nil {
 				return err
 			}
@@ -44,7 +43,6 @@ func CmdUpdateDeviceStatus() *cobra.Command {
 				argVoltage,
 				argPower,
 				argOthers,
-				argAddres,
 				argGridId,
 			)
 			if err := msg.ValidateBasic(); err != nil {

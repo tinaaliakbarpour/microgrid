@@ -9,7 +9,7 @@ const TypeMsgUpdateDeviceStatus = "update_device_status"
 
 var _ sdk.Msg = &MsgUpdateDeviceStatus{}
 
-func NewMsgUpdateDeviceStatus(creator string, voltage uint64, power uint64, others string, addres string, gridId uint64) *MsgUpdateDeviceStatus {
+func NewMsgUpdateDeviceStatus(creator string, voltage uint64, power uint64, others string, gridId uint64) *MsgUpdateDeviceStatus {
 	return &MsgUpdateDeviceStatus{
 		Creator: creator,
 		Voltage: voltage,
