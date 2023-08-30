@@ -24,7 +24,8 @@ func (k msgServer) CreateGrid(goCtx context.Context, msg *types.MsgCreateGrid) (
 	for _, g := range grids {
 		if grid.Name == g.Name {
 			return nil, sdkerrors.Wrap(types.ErrorDuplicate, fmt.Sprintf("key %s already exist", msg.Name))
-		} else if grid.CenterLat == g.CenterLat && grid.CenterLon == g.CenterLon {
+		}
+		if grid.CenterLat == g.CenterLat && grid.CenterLon == g.CenterLon {
 			return nil, sdkerrors.Wrap(types.ErrorDuplicate, fmt.Sprintf("key with this location: %d, %d already exist", msg.CenterLat, msg.CenterLon))
 		}
 	}
