@@ -2,8 +2,10 @@ package keeper
 
 import (
 	"context"
+	"fmt"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
+	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	"github.com/tinaaliakbarpour/microgrid/x/iot/types"
 )
 
@@ -15,6 +17,14 @@ func (k msgServer) CreateGrid(goCtx context.Context, msg *types.MsgCreateGrid) (
 		CenterLat: msg.CenterLat,
 		CenterLon: msg.CenterLon,
 		Side:      msg.Side,
+	}
+
+	//todo : it is a non efficient and simple validation, we have to optimize it
+	grids := k.GetAllGrid(ctx)
+	for _, g := range grids {
+		if grid.Name == g.Name && grid.CenterLat == g.CenterLat && grid.CenterLon == g.CenterLon && grid.Side == g.Side {
+			return nil, sdkerrors.Wrap(types.ErrorDuplicate, fmt.Sprintf("key %s already exist", msg.Name))
+		}
 	}
 	id := k.AppendGrid(
 		ctx,

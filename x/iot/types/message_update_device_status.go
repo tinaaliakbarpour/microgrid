@@ -15,7 +15,6 @@ func NewMsgUpdateDeviceStatus(creator string, voltage uint64, power uint64, othe
 		Voltage: voltage,
 		Power:   power,
 		Others:  others,
-		Addres:  addres,
 		GridId:  gridId,
 	}
 }
@@ -44,9 +43,6 @@ func (msg *MsgUpdateDeviceStatus) GetSignBytes() []byte {
 func (msg *MsgUpdateDeviceStatus) ValidateBasic() error {
 	_, err := sdk.AccAddressFromBech32(msg.Creator)
 	if err != nil {
-		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)
-	}
-	if _, err := sdk.AccAddressFromBech32(msg.Addres); err != nil {
 		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)
 	}
 	return nil

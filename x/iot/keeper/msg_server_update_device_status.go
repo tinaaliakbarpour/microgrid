@@ -12,9 +12,9 @@ import (
 func (k msgServer) UpdateDeviceStatus(goCtx context.Context, msg *types.MsgUpdateDeviceStatus) (*types.MsgUpdateDeviceStatusResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
-	device, found := k.GetDevice(ctx, msg.GridId, msg.Addres)
+	device, found := k.GetDevice(ctx, msg.GridId, msg.Creator)
 	if !found {
-		return nil, sdkerrors.Wrap(sdkerrors.ErrKeyNotFound, fmt.Sprintf("key %d-%s doesn't exist", msg.GridId, msg.Addres))
+		return nil, sdkerrors.Wrap(sdkerrors.ErrKeyNotFound, fmt.Sprintf("key %d-%s doesn't exist", msg.GridId, msg.Creator))
 	}
 
 	device.Voltage = msg.Voltage

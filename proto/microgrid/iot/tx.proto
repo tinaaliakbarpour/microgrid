@@ -61,8 +61,7 @@ message MsgUpdateDeviceStatus {
   uint64 voltage = 2;
   uint64 power   = 3;
   string others  = 4;
-  string addres  = 5;
-  uint64 gridId  = 6;
+  uint64 gridId  = 5;
 }
 
 message MsgUpdateDeviceStatusResponse {}
