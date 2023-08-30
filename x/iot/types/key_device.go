@@ -30,4 +30,16 @@ func DeviceKey(
 	return key
 }
 
-//todo: check whether it is working
+// DevicesKeyByGridId returns a key that returns all the devices belongs to a specific grid id
+func DevicesKeyByGridId(gridID uint64) []byte {
+	var key []byte
+
+	gridIdBytes := make([]byte, 8)
+	binary.BigEndian.PutUint64(gridIdBytes, gridID)
+
+	key = append(key, KeyPrefix(DeviceKeyPrefix)...)
+	key = append(key, gridIdBytes...)
+
+	key = append(key, []byte("/")...)
+	return key
+}

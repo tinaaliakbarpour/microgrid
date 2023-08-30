@@ -21,6 +21,8 @@ func (k msgServer) UpdateDeviceStatus(goCtx context.Context, msg *types.MsgUpdat
 	device.Power = msg.Power
 	device.Others = msg.Others
 
+	k.SetDevice(ctx, device)
+
 	return &types.MsgUpdateDeviceStatusResponse{}, nil
 }
 

@@ -66,29 +66,3 @@ func (k Keeper) GetAllDevice(ctx sdk.Context) (list []types.Device) {
 
 	return
 }
-
-// // GetDevicesByGridId return all devices in one grid
-// func (k Keeper) GetDevicesByGridId(ctx sdk.Context, gridId uint64) (list []types.Device) {
-
-// 	})
-
-// 	return
-// }
-
-// // GetDevicesByGridId return all devices in one grid
-// func (k Keeper) GetDevicesByGridId(ctx sdk.Context, gridId uint64) (list []types.Device) {
-// 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.DeviceKeyPrefix))
-// 	gridIdBytes := make([]byte, 8)
-// 	binary.BigEndian.PutUint64(gridIdBytes, gridId)
-// 	iterator := sdk.KVStorePrefixIterator(store, gridIdBytes)
-
-// 	defer iterator.Close()
-
-// 	for ; iterator.Valid(); iterator.Next() {
-// 		var val types.Device
-// 		k.cdc.MustUnmarshal(iterator.Value(), &val)
-// 		list = append(list, val)
-// 	}
-
-// 	return
-// }

@@ -2,7 +2,6 @@ package keeper
 
 import (
 	"context"
-	"encoding/binary"
 
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -17,18 +16,9 @@ func (k Keeper) ListDeviceByGridId(goCtx context.Context, req *types.QueryListDe
 		return nil, status.Error(codes.InvalidArgument, "invalid request")
 	}
 
-	// var devices []*types.Device
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
-	var key []byte
-
-	gridIdBytes := make([]byte, 8)
-	binary.BigEndian.PutUint64(gridIdBytes, req.GridId)
-	key = append(key, types.KeyPrefix(types.DeviceKeyPrefix)...)
-	key = append(key, gridIdBytes...)
-	key = append(key, []byte("/")...)
-
-	store := prefix.NewStore(ctx.KVStore(k.storeKey), key)
+	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.DevicesKeyByGridId(req.GridId))
 
 	var devices []*types.Device
 
